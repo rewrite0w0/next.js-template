@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js template
 
-## Getting Started
+## 설치
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+npm i
+yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 디버그
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 구조
 
-## Learn More
+```bash
++---.storybook # 스토리북
++---app # next.js 13에서 app router
++---components # 컴포넌트
++---config # 설정파일
++---features # 분리한 feature 관리
+├─index.ts # 모음
+├─api # api 관련 정보, UI와 분리
+├─components # feature 관련 컴포넌트 관리
+└─types # feature의 타입 정의
++---lib # 라이브러리 설정 관리
++---providers # 애플리케이션 전체를 wrap할 것 정의하는 곳
++---public # svg 같은 공공 자원 관리
++---stores # 글로벌 State 관리
++---stories # 스토리북
++---testing # 테스트 관련 목 데이터나 함수 등
++---types # 애플리케이션에서 사용되는 TS 정의
++---utils # 편의 함수
++---__tests__
+```
 
-To learn more about Next.js, take a look at the following resources:
+## husky
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### push
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+main이나 master에 직접 푸시 방지
 
-## Deploy on Vercel
+`.husky/pre-push`에서 `FORBIDDEN_HTTPS_URL="https://github.com/[id]/[project-name].git"`, `FORBIDDEN_SSH_URL="git@github.com:[id]/[project-name].git"` 여기를 본인 레포지토리로 변경
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### commit-msg
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`commitlint` 규칙에 따라 메세지 남겨야함
+
+### pre-commit
+
+커밋할 때 동작할 것
+
+## 참조
+
+- [Next.js](https://nextjs.org/docs/app/building-your-application/routing)
+- [Next.js 13.4](https://nextjs.org/blog/next-13-4#nextjs-app-router)
+- [nextjs-fullstack-app-template](https://github.com/alexeagleson/nextjs-fullstack-app-template)
+- [React Application Architecture for Production](https://github.com/PacktPublishing/React-Application-Architecture-for-Production)
+- [React Application Architecture for Production〜これ一冊で全てが網羅〜](https://qiita.com/taisei-13046/items/64f764ad2d2caaf4d7d4)
+- [Next.js 13 app directory で記事投稿サイトを作ってみよう](https://zenn.dev/azukiazusa/articles/next-js-app-dir-tutorial)

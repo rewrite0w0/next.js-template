@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npm test 같이 커밋 행동할 무엇인가
